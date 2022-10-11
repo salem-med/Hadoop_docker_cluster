@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <!-- IF YOU CHANGE THIS HERE BE SURE TO CHANGE IT IN SCRIPTS WHERE YOU START DOCKER CONTAINER AND SPECIFY HOST -->
+        <!-- hdfs/namenode/run.sh -->
+        <value>hdfs://namenode-master:9000</value>
+    </property>
+</configuration>
