@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namenode-deployment
+  labels:
+    app: namenode
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: namenode
+  template:
+    metadata:
+      labels:
+        app: namenode
+    spec:
+      hostname: namenode-service
+      containers:
+      - name: namenode
+        image: localhost:5000/namenode
+        ports:
+        - containerPort: 9870
+          name: webui
+        - containerPort: 9000
+          name: hdfs
+        - containerPort: 50030
+          name: websecure
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: namenode-service
+spec:
+  selector:
+    app: namenode
+  ports:
+  - protocol: TCP
+    port: 9000
+    name: hdfs
+    targetPort: 9000
+  - protocol: TCP
+    port: 50030
+    name: websecure
+    targetPort: 50030
+  - protocol: TCP
+    port: 9870
+    targetPort: 9870
+    name: webui
+    nodePort: 30100

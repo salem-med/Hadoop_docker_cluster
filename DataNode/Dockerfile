@@ -7,6 +7,10 @@ ENV HADOOP_TAR_NAME=hadoop-3.3.4.tar.gz
 
 RUN apt update
 RUN apt install -y arp-scan python3
+RUN apt-get install -y dnsutils
+RUN apt-get install -y iputils-ping
+RUN apt install -y firewalld
+RUN apt update
 
 WORKDIR /opt
 

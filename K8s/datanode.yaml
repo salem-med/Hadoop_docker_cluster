@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datanode-deployment
+  labels:
+    app: datanode
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: datanode
+
+  template:
+    metadata:
+      labels:
+        app: datanode
+    spec:
+      containers:
+      - name: datanode
+        image: localhost:5000/datanode
+        env:
+        - name: CORE_CONF_fs_defaultFS
+          valueFrom:
+            configMapKeyRef:
+              name: namenode-config
+              key: namenode-hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: datanode-service
+spec:
+  selector:
+    app: datanode
+  ports:
+    - name: hdfs
+      protocol: TCP
+      port: 9000
+      targetPort: 9000

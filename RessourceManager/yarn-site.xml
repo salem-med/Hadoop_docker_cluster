@@ -5,7 +5,7 @@
 
 <property>
 <name>yarn.resourcemanager.hostname</name>
-<value>namenode-master</value>
+<value>namenode-service</value>
 </property>
 
 
@@ -39,6 +39,6 @@
 </property>
 <property>
 <name>yarn.nodemanager.remote-app-log-dir</name>
-<value>hdfs://namenode-master:9000/var/log/hadoop-yarn/apps</value>
+<value>hdfs://namenode-service:9000/var/log/hadoop-yarn/apps</value>
 </property>
 </configuration>
