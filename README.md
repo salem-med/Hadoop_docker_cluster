@@ -1,5 +1,5 @@
 ## Hadoop_docker_cluster
-# A hadoop cluster running on containers.
+# A hadoop cluster running on Kubernetes cluster.
 
 to setup datanode and namenode containers please execute build_images.cmd first and run_containers.cmd
 
